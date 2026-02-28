@@ -90,7 +90,7 @@
         "related_models": ["ols", "ridge", "gp-reg"]
     },
     {
-        "id": "poisson-reg",
+        "id": "poisson",
         "name": "Poisson Regression",
         "short_description": "Generalized linear model for count data using a log link function and Poisson distribution.",
         "task": "regression",
@@ -102,10 +102,10 @@
         "color_accent": "#3fb950",
         "use_cases": ["event counts", "rate modeling", "insurance claims"],
         "sklearn_class": "sklearn.linear_model.PoissonRegressor",
-        "related_models": ["gamma-reg", "tweedie-reg"]
+        "related_models": ["gamma", "tweedie"]
     },
     {
-        "id": "gamma-reg",
+        "id": "gamma",
         "name": "Gamma Regression",
         "short_description": "GLM for positive continuous data with constant coefficient of variation, using a log link.",
         "task": "regression",
@@ -117,10 +117,10 @@
         "color_accent": "#3fb950",
         "use_cases": ["insurance costs", "survival times", "positive-valued outcomes"],
         "sklearn_class": "sklearn.linear_model.GammaRegressor",
-        "related_models": ["poisson-reg", "tweedie-reg"]
+        "related_models": ["poisson", "tweedie"]
     },
     {
-        "id": "tweedie-reg",
+        "id": "tweedie",
         "name": "Tweedie Regression",
         "short_description": "GLM with power variance function, interpolating between Poisson and Gamma distributions.",
         "task": "regression",
@@ -132,10 +132,10 @@
         "color_accent": "#3fb950",
         "use_cases": ["insurance pricing", "zero-inflated data", "aggregate claims"],
         "sklearn_class": "sklearn.linear_model.TweedieRegressor",
-        "related_models": ["poisson-reg", "gamma-reg"]
+        "related_models": ["poisson", "gamma"]
     },
     {
-        "id": "quantile-reg",
+        "id": "quantile",
         "name": "Quantile Regression",
         "short_description": "Estimates conditional quantiles rather than the mean, robust to outliers and heteroscedasticity.",
         "task": "regression",
@@ -147,7 +147,7 @@
         "color_accent": "#3fb950",
         "use_cases": ["risk analysis", "prediction intervals", "heteroscedastic data"],
         "sklearn_class": "sklearn.linear_model.QuantileRegressor",
-        "related_models": ["huber-reg", "ols"]
+        "related_models": ["huber", "ols"]
     },
     {
         "id": "dt-reg",
@@ -330,7 +330,7 @@
         "related_models": ["bayesian-linear", "kernel-ridge"]
     },
     {
-        "id": "bart-reg",
+        "id": "bart",
         "name": "BART",
         "short_description": "Bayesian Additive Regression Trees: ensemble of weak trees with Bayesian priors and MCMC inference.",
         "task": "regression",
@@ -345,7 +345,7 @@
         "related_models": ["rf-reg", "gp-reg", "xgb-reg"]
     },
     {
-        "id": "huber-reg",
+        "id": "huber",
         "name": "Huber Regression",
         "short_description": "Uses a loss function that is quadratic for small errors and linear for large ones, robust to outliers.",
         "task": "regression",
@@ -357,10 +357,10 @@
         "color_accent": "#8b949e",
         "use_cases": ["outlier-contaminated data", "robust estimation"],
         "sklearn_class": "sklearn.linear_model.HuberRegressor",
-        "related_models": ["ransac-reg", "theil-sen", "ols"]
+        "related_models": ["ransac", "theil-sen", "ols"]
     },
     {
-        "id": "ransac-reg",
+        "id": "ransac",
         "name": "RANSAC",
         "short_description": "Iteratively fits models to random subsets, identifying the largest consensus set of inliers.",
         "task": "regression",
@@ -372,7 +372,7 @@
         "color_accent": "#8b949e",
         "use_cases": ["outlier removal", "computer vision", "robust fitting"],
         "sklearn_class": "sklearn.linear_model.RANSACRegressor",
-        "related_models": ["huber-reg", "theil-sen"]
+        "related_models": ["huber", "theil-sen"]
     },
     {
         "id": "theil-sen",
@@ -387,7 +387,7 @@
         "color_accent": "#8b949e",
         "use_cases": ["robust trend estimation", "outlier resistance", "simple robust models"],
         "sklearn_class": "sklearn.linear_model.TheilSenRegressor",
-        "related_models": ["huber-reg", "ransac-reg"]
+        "related_models": ["huber", "ransac"]
     },
     {
         "id": "logistic",
@@ -402,10 +402,10 @@
         "color_accent": "#79c0ff",
         "use_cases": ["binary classification", "probability estimation", "medical diagnosis"],
         "sklearn_class": "sklearn.linear_model.LogisticRegression",
-        "related_models": ["multinomial-logistic", "lda", "perceptron"]
+        "related_models": ["multinomial", "lda", "perceptron"]
     },
     {
-        "id": "multinomial-logistic",
+        "id": "multinomial",
         "name": "Multinomial Logistic Regression",
         "short_description": "Extends logistic regression to multi-class via softmax, modeling probabilities across all classes simultaneously.",
         "task": "classification",
@@ -720,7 +720,7 @@
         "related_models": ["gaussian-nb", "gmm"]
     },
     {
-        "id": "bagging",
+        "id": "bagging-cls",
         "name": "Bagging",
         "short_description": "Bootstrap Aggregating: trains multiple models on bootstrap samples and combines by averaging or voting.",
         "task": "classification",
@@ -732,10 +732,10 @@
         "color_accent": "#a5d6ff",
         "use_cases": ["variance reduction", "unstable learners", "general improvement"],
         "sklearn_class": "sklearn.ensemble.BaggingClassifier",
-        "related_models": ["boosting", "rf-cls"]
+        "related_models": ["boosting-cls", "rf-cls"]
     },
     {
-        "id": "boosting",
+        "id": "boosting-cls",
         "name": "Gradient Boosting",
         "short_description": "Sequentially adds weak learners that fit the residual errors, building a strong ensemble step by step.",
         "task": "classification",
@@ -747,10 +747,10 @@
         "color_accent": "#a5d6ff",
         "use_cases": ["bias reduction", "complex patterns", "tabular data"],
         "sklearn_class": "sklearn.ensemble.GradientBoostingClassifier",
-        "related_models": ["bagging", "xgb-cls", "adaboost-cls"]
+        "related_models": ["bagging-cls", "xgb-cls", "adaboost-cls"]
     },
     {
-        "id": "stacking",
+        "id": "stacking-cls",
         "name": "Stacking",
         "short_description": "Trains a meta-learner on the predictions of diverse base models for improved generalization.",
         "task": "classification",
@@ -762,10 +762,10 @@
         "color_accent": "#a5d6ff",
         "use_cases": ["competition ensembles", "model combination", "improved accuracy"],
         "sklearn_class": "sklearn.ensemble.StackingClassifier",
-        "related_models": ["bagging", "voting"]
+        "related_models": ["bagging-cls", "voting-cls"]
     },
     {
-        "id": "voting",
+        "id": "voting-cls",
         "name": "Voting Classifier",
         "short_description": "Combines predictions from multiple diverse classifiers using hard (majority) or soft (probability) voting.",
         "task": "classification",
@@ -777,6 +777,6 @@
         "color_accent": "#a5d6ff",
         "use_cases": ["model combination", "robust prediction", "simple ensemble"],
         "sklearn_class": "sklearn.ensemble.VotingClassifier",
-        "related_models": ["stacking", "bagging"]
+        "related_models": ["stacking-cls", "bagging-cls"]
     }
 ]
