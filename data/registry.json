@@ -1,0 +1,111 @@
+{
+    "schema_version": "1.0",
+    "base_url_pattern": "https://{github_user}.github.io/{repo_name}",
+    "github_user": "malphons",
+    "spokes": [
+        {
+            "id": "reg-linear",
+            "repo_name": "ml-zoo-reg-linear",
+            "task": "regression",
+            "subcategory": "linear",
+            "label": "Linear Models",
+            "enabled": true
+        },
+        {
+            "id": "reg-glm",
+            "repo_name": "ml-zoo-reg-glm",
+            "task": "regression",
+            "subcategory": "glm",
+            "label": "Generalized Linear Models",
+            "enabled": true
+        },
+        {
+            "id": "reg-tree",
+            "repo_name": "ml-zoo-reg-tree",
+            "task": "regression",
+            "subcategory": "tree",
+            "label": "Tree-Based Models",
+            "enabled": true
+        },
+        {
+            "id": "reg-kernel",
+            "repo_name": "ml-zoo-reg-kernel",
+            "task": "regression",
+            "subcategory": "kernel",
+            "label": "Kernel / Margin-Based",
+            "enabled": true
+        },
+        {
+            "id": "reg-instance",
+            "repo_name": "ml-zoo-reg-instance",
+            "task": "regression",
+            "subcategory": "instance",
+            "label": "Instance-Based Methods",
+            "enabled": true
+        },
+        {
+            "id": "reg-bayes",
+            "repo_name": "ml-zoo-reg-bayes",
+            "task": "regression",
+            "subcategory": "bayes",
+            "label": "Probabilistic / Bayesian",
+            "enabled": true
+        },
+        {
+            "id": "reg-robust",
+            "repo_name": "ml-zoo-reg-robust",
+            "task": "regression",
+            "subcategory": "robust",
+            "label": "Robust Regression",
+            "enabled": true
+        },
+        {
+            "id": "cls-linear",
+            "repo_name": "ml-zoo-cls-linear",
+            "task": "classification",
+            "subcategory": "linear",
+            "label": "Linear Models",
+            "enabled": true
+        },
+        {
+            "id": "cls-tree",
+            "repo_name": "ml-zoo-cls-tree",
+            "task": "classification",
+            "subcategory": "tree",
+            "label": "Tree-Based Models",
+            "enabled": true
+        },
+        {
+            "id": "cls-kernel",
+            "repo_name": "ml-zoo-cls-kernel",
+            "task": "classification",
+            "subcategory": "kernel",
+            "label": "Kernel / Margin-Based",
+            "enabled": true
+        },
+        {
+            "id": "cls-instance",
+            "repo_name": "ml-zoo-cls-instance",
+            "task": "classification",
+            "subcategory": "instance",
+            "label": "Instance-Based Methods",
+            "enabled": true
+        },
+        {
+            "id": "cls-prob",
+            "repo_name": "ml-zoo-cls-prob",
+            "task": "classification",
+            "subcategory": "prob",
+            "label": "Probabilistic Models",
+            "enabled": true
+        },
+        {
+            "id": "cls-ensemble",
+            "repo_name": "ml-zoo-cls-ensemble",
+            "task": "classification",
+            "subcategory": "ensemble",
+            "label": "Ensemble Meta-Methods",
+            "enabled": true
+        }
+    ]
+}

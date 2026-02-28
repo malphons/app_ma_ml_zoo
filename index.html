@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Zoo — Interactive Machine Learning Model Gallery</title>
+    <meta name="description" content="A visual, interactive gallery of classical machine learning models. Explore regression and classification algorithms with interactive D3.js visualizations.">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/zoo.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/search.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="zoo-container">
+
+        <!-- ===== Header ===== -->
+        <header class="zoo-header">
+            <a href="/" class="zoo-header__brand">
+                <img src="assets/logo.svg" alt="ML Zoo" class="zoo-header__logo">
+                <div>
+                    <div class="zoo-header__title">ML Zoo</div>
+                    <div class="zoo-header__subtitle">Interactive Machine Learning Model Gallery</div>
+                </div>
+            </a>
+            <div class="zoo-header__actions">
+                <a href="https://github.com/malphons" target="_blank" rel="noopener"
+                   style="color:var(--text-secondary);display:flex" title="GitHub">
+                    <svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15
+                        -.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87
+                        .51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
+                        0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82
+                        2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65
+                        3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013
+                        0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                </a>
+                <button class="zoo-theme-toggle" title="Toggle theme"></button>
+            </div>
+        </header>
+
+        <!-- ===== Hero ===== -->
+        <section class="zoo-hero">
+            <h1 class="zoo-hero__title">The Machine Learning Zoo</h1>
+            <p class="zoo-hero__desc">
+                Explore 52 classical machine learning models with interactive visualizations,
+                mathematical foundations, and practical code examples.
+            </p>
+        </section>
+
+        <!-- ===== Search & Filters ===== -->
+        <section class="zoo-search">
+
+            <!-- Task filter -->
+            <div class="zoo-task-filters">
+                <span class="zoo-task-filters__label">Task:</span>
+                <button class="zoo-task-pill zoo-task-pill--active" data-task="all">All</button>
+                <button class="zoo-task-pill" data-task="regression">Regression</button>
+                <button class="zoo-task-pill" data-task="classification">Classification</button>
+            </div>
+
+            <!-- Search bar -->
+            <div class="zoo-search__bar">
+                <svg class="zoo-search__icon" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" class="zoo-search__input"
+                       placeholder="Search models, tags, sklearn classes...">
+            </div>
+
+            <!-- Subcategory filter pills (rendered by JS) -->
+            <div class="zoo-filters"></div>
+
+            <!-- Results bar -->
+            <div class="zoo-search__results">
+                <span class="zoo-search__count">Loading...</span>
+                <div class="zoo-search__actions">
+                    <button class="zoo-view-toggle" data-view="grid" title="Grid view">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="3" y="3" width="7" height="7" rx="1"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1"/>
+                        </svg>
+                    </button>
+                    <button class="zoo-view-toggle" data-view="grouped" title="Grouped view">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="3" y="3" width="18" height="3" rx="1"/>
+                            <rect x="3" y="9" width="18" height="3" rx="1"/>
+                            <rect x="3" y="15" width="18" height="3" rx="1"/>
+                            <rect x="3" y="21" width="12" height="3" rx="1"/>
+                        </svg>
+                    </button>
+                    <select class="zoo-search__sort">
+                        <option value="name">Sort: A-Z</option>
+                        <option value="year-asc">Sort: Oldest first</option>
+                        <option value="year-desc">Sort: Newest first</option>
+                        <option value="complexity">Sort: Complexity</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Card Grid ===== -->
+        <main class="zoo-grid"></main>
+
+        <!-- ===== Footer ===== -->
+        <footer class="zoo-footer">
+            ML Zoo &mdash; An interactive guide to classical machine learning models.
+        </footer>
+
+    </div>
+
+    <!-- Scripts (order matters: registry → gallery → search → app) -->
+    <script src="js/registry.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

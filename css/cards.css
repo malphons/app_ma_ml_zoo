@@ -1,0 +1,215 @@
+/* ============================================================
+   ML Zoo — Card Grid & Card Components
+   ============================================================ */
+
+/* ---------- Grid ---------- */
+.zoo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+/* ---------- Card ---------- */
+.zoo-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: transform var(--transition),
+                box-shadow var(--transition),
+                border-color var(--transition);
+}
+.zoo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--text-muted);
+    text-decoration: none;
+}
+
+/* ---------- Thumbnail ---------- */
+.zoo-card__thumbnail {
+    height: 180px;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+.zoo-card__thumbnail svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Hover animations for thumbnail SVG elements */
+.zoo-card:hover .ml-node {
+    animation: point-pulse 1.5s ease-in-out infinite;
+}
+.zoo-card:hover .ml-edge {
+    stroke-dasharray: 6 3;
+    animation: line-draw 1.2s linear infinite;
+}
+.zoo-card:hover .ml-region {
+    animation: region-glow .8s ease-in-out infinite alternate;
+}
+
+@keyframes point-pulse {
+    0%, 100% { opacity: .7; }
+    50%      { opacity: 1; }
+}
+@keyframes line-draw {
+    to { stroke-dashoffset: -9; }
+}
+@keyframes region-glow {
+    from { opacity: .12; }
+    to   { opacity: .22; }
+}
+
+/* ---------- Body ---------- */
+.zoo-card__body {
+    flex: 1;
+    padding: 14px 16px 10px;
+}
+.zoo-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+.zoo-card__year {
+    font-size: .75rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+.zoo-card__description {
+    font-size: .83rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ---------- Meta row ---------- */
+.zoo-card__meta {
+    padding: 10px 16px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Task badge (REG / CLS) */
+.zoo-card__task-badge {
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: #fff;
+}
+.zoo-card__task-badge--regression {
+    background: var(--task-regression);
+}
+.zoo-card__task-badge--classification {
+    background: var(--task-classification);
+}
+
+/* Category badge */
+.zoo-card__category-badge {
+    font-size: .65rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(139,148,158,.15);
+    color: var(--text-secondary);
+}
+
+/* Tags */
+.zoo-card__tag {
+    font-size: .7rem;
+    color: var(--text-muted);
+    background: var(--bg-input);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Complexity dots */
+.zoo-card__complexity {
+    margin-left: auto;
+    display: flex;
+    gap: 3px;
+}
+.zoo-card__complexity-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--border-default);
+}
+.zoo-card__complexity-dot--filled {
+    background: var(--text-secondary);
+}
+
+/* ---------- Coming-soon overlay ---------- */
+.zoo-card--coming-soon {
+    opacity: .55;
+    pointer-events: none;
+}
+.zoo-card--coming-soon .zoo-card__thumbnail::after {
+    content: "Coming Soon";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.35);
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+}
+
+/* ---------- Skeleton loading ---------- */
+.zoo-skeleton {
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+.zoo-skeleton__thumb {
+    height: 180px;
+    background: linear-gradient(110deg, var(--bg-secondary) 30%, var(--bg-card-hover) 50%, var(--bg-secondary) 70%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.6s linear infinite;
+}
+.zoo-skeleton__body { padding: 14px 16px; }
+.zoo-skeleton__line {
+    height: 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background: linear-gradient(110deg, var(--bg-secondary) 30%, var(--bg-card-hover) 50%, var(--bg-secondary) 70%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.6s linear infinite;
+}
+.zoo-skeleton__line--short { width: 55%; }
+.zoo-skeleton__line--medium { width: 80%; }
+
+@keyframes skeleton-shimmer {
+    to { background-position: -200% 0; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+    .zoo-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .zoo-card__thumbnail { height: 150px; }
+}

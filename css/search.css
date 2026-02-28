@@ -1,0 +1,184 @@
+/* ============================================================
+   ML Zoo — Search Bar, Filter Pills, Sort Controls
+   ============================================================ */
+
+.zoo-search {
+    margin-bottom: 24px;
+}
+
+/* ---------- Task-level filter row ---------- */
+.zoo-task-filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+.zoo-task-filters__label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-right: 4px;
+}
+
+.zoo-task-pill {
+    font-size: .78rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+.zoo-task-pill:hover {
+    border-color: var(--text-muted);
+    color: var(--text-primary);
+}
+.zoo-task-pill--active {
+    background: var(--text-link);
+    color: #fff;
+    border-color: var(--text-link);
+}
+.zoo-task-pill--active:hover {
+    color: #fff;
+}
+
+/* ---------- Search bar ---------- */
+.zoo-search__bar {
+    position: relative;
+    margin-bottom: 12px;
+}
+.zoo-search__input {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    font-size: .9rem;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--bg-input);
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    font-family: inherit;
+}
+.zoo-search__input::placeholder { color: var(--text-muted); }
+.zoo-search__input:focus {
+    border-color: var(--text-link);
+    box-shadow: 0 0 0 3px rgba(88,166,255,.15);
+}
+.zoo-search__icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+/* ---------- Subcategory filter row ---------- */
+.zoo-filters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+.zoo-filters__label {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-right: 4px;
+}
+
+.zoo-filter-pill {
+    font-size: .72rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 14px;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+.zoo-filter-pill:hover {
+    border-color: var(--text-muted);
+    color: var(--text-secondary);
+}
+.zoo-filter-pill--active {
+    border-color: currentColor;
+}
+
+/* Dynamic pill colour for active state — set via JS inline style */
+
+/* ---------- Results bar ---------- */
+.zoo-search__results {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-muted);
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.zoo-search__count {
+    font-size: .82rem;
+    color: var(--text-secondary);
+}
+
+.zoo-search__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* View toggle buttons */
+.zoo-view-toggle {
+    font-size: .75rem;
+    padding: 4px 10px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+.zoo-view-toggle:hover { color: var(--text-secondary); border-color: var(--text-muted); }
+.zoo-view-toggle--active {
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+/* Sort select */
+.zoo-search__sort {
+    font-size: .78rem;
+    padding: 4px 8px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    background: var(--bg-input);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ---------- No results ---------- */
+.zoo-no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+.zoo-no-results__icon { font-size: 2.5rem; margin-bottom: 12px; }
+.zoo-no-results__text { font-size: 1rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+    .zoo-task-filters { gap: 6px; }
+    .zoo-task-pill { padding: 4px 10px; font-size: .72rem; }
+    .zoo-search__results { flex-direction: column; align-items: flex-start; }
+}
